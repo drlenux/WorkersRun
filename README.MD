@@ -1,3 +1,8 @@
+[![Latest Stable Version](https://img.shields.io/packagist/v/drlenux/workers-run.svg)](https://packagist.org/packages/drlenux/workers-run)
+[![Total Downloads](https://img.shields.io/packagist/dt/drlenux/workers-run.svg)](https://packagist.org/packages/drlenux/workers-run)
+[![php version](https://img.shields.io/packagist/php-v/drlenux/workers-run.svg)](https://packagist.org/packages/drlenux/workers-run)
+
+
 EXAMPLE
 
 ```php
