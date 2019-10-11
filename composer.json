@@ -1,0 +1,27 @@
+{
+  "name": "drlenux/workers-run",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "DrLenux",
+      "email": "drlenux@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "alecrabbit/php-console-spinner": "^0.52.0",
+    "misterion/ko-process": "^0.5.3"
+  },
+  "suggest": {
+    "ext-proctitle": "*",
+    "ext-pcntl": "*",
+    "ext-sysvsem": "Required for using the Semaphore class",
+    "ext-sysvshm": "Required for using the SharedMemory class",
+    "ext-posix": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "DrLenux\\WorkersRun\\": "src/"
+    }
+  }
+}
