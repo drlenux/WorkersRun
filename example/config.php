@@ -1,7 +1,7 @@
 <?php
 
-use DrLenux\WorkersRun\messenger\{SemaphoreDb, FileDb};
-use DrLenux\WorkersRun\messenger\config\{SemaphoreDbConfig, FileDbConfig};
+use DrLenux\WorkersRun\messenger\SemaphoreDb;
+use DrLenux\WorkersRun\messenger\config\SemaphoreDbConfig;
 use DrLenux\WorkersRun\lock\SemaphoreLock;
 
 return [

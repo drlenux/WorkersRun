@@ -10,18 +10,16 @@
 ```php
 <?php
 
-use Symfony\Component\Lock\Store\FlockStore;
-use DrLenux\WorkersRun\messenger\FileDb;
+use DrLenux\WorkersRun\messenger\SemaphoreDb;
+use DrLenux\WorkersRun\messenger\config\SemaphoreDbConfig;
+use DrLenux\WorkersRun\lock\SemaphoreLock;
 
 return [
     'messenger' => [
-        'lockStore' => FlockStore::class,
+        'lockStore' => SemaphoreLock::getStore(),
         'db' => [
-            'class' => FileDb::class,
-            'config' => [
-                'type' => FileDb::FILE_TYPE_YAML,
-                'file' => __DIR__ . '/mess.yaml'
-            ]
+            'class' => SemaphoreDb::class,
+            'config' => new SemaphoreDbConfig(123, 500),
         ]
     ]
 ];
