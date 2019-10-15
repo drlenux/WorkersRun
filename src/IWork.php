@@ -8,5 +8,9 @@ namespace DrLenux\WorkersRun;
  */
 interface IWork
 {
-    public function run(): bool;
+    /**
+     * @param Messenger $messenger
+     * @return MessengerResponse|null
+     */
+    public function run(Messenger $messenger): ?MessengerResponse;
 }

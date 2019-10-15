@@ -1,10 +1,12 @@
 <?php
 
-
 namespace DrLenux\WorkersRun;
 
-
-class MessangerResponse
+/**
+ * Class MessengerResponse
+ * @package DrLenux\WorkersRun
+ */
+class MessengerResponse
 {
     /**
      * @var string
@@ -57,6 +59,4 @@ class MessangerResponse
     {
         return $this->message;
     }
-
-
 }

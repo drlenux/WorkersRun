@@ -10,7 +10,10 @@
   "require": {
     "php": "^7.1",
     "alecrabbit/php-console-spinner": "^0.52.0",
-    "misterion/ko-process": "^0.5.3"
+    "misterion/ko-process": "^0.5.3",
+    "symfony/lock": "^4.3",
+    "ext-json": "*",
+    "ext-yaml": "*"
   },
   "suggest": {
     "ext-proctitle": "*",
@@ -22,6 +25,11 @@
   "autoload": {
     "psr-4": {
       "DrLenux\\WorkersRun\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "example\\": "example/"
     }
   }
 }

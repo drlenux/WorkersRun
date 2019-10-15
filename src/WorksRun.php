@@ -22,12 +22,19 @@ class WorksRun
     private $manager;
 
     /**
-     * Test constructor.
+     * @var IMessenger
      */
-    public function __construct()
+    private $messenger;
+
+    /**
+     * WorksRun constructor.
+     * @param array $config
+     */
+    public function __construct(array $config)
     {
         $this->spinner = new SnakeSpinner();
         $this->manager = new ProcessManager();
+        $this->messenger = new Messenger($config['messenger']);
     }
 
     /**
@@ -36,9 +43,13 @@ class WorksRun
      */
     public function run(Works $works): self
     {
+        $messenger = $this->messenger;
         foreach ($works->getWorks() as $class) {
-            $this->manager->fork(function () use ($class) {
-                $class->run();
+            $this->manager->fork(function () use ($class, $messenger) {
+                $message = $class->run($messenger);
+                if (null !== $message) {
+                    $messenger->send($message);
+                }
             });
         }
 
