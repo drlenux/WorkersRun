@@ -1,6 +1,7 @@
 {
   "name": "drlenux/workers-run",
   "license": "MIT",
+  "description": "php, worker, pcntl, messenger",
   "authors": [
     {
       "name": "DrLenux",
