@@ -14,14 +14,18 @@
     "misterion/ko-process": "^0.5.3",
     "symfony/lock": "^4.3",
     "ext-json": "*",
-    "ext-yaml": "*"
+    "ext-yaml": "*",
+    "symfony/var-dumper": "^4.3"
+  },
+  "require-dev": {
   },
   "suggest": {
     "ext-proctitle": "*",
     "ext-pcntl": "*",
     "ext-sysvsem": "Required for using the Semaphore class",
     "ext-sysvshm": "Required for using the SharedMemory class",
-    "ext-posix": "*"
+    "ext-posix": "*",
+    "ext-sysvmsg": "*"
   },
   "autoload": {
     "psr-4": {

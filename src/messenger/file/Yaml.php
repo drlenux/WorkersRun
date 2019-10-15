@@ -2,6 +2,7 @@
 
 namespace DrLenux\WorkersRun\messenger\file;
 
+use DrLenux\WorkersRun\IConfig;
 use DrLenux\WorkersRun\messenger\DB;
 use DrLenux\WorkersRun\messenger\helper\ArrayHelper;
 use DrLenux\WorkersRun\MessengerResponse;
@@ -10,7 +11,7 @@ use DrLenux\WorkersRun\MessengerResponse;
  * Class Yaml
  * @package src\messenger\file
  */
-class Yaml implements DB
+class Yaml implements DB, IFile
 {
     /**
      * @var array
@@ -18,12 +19,12 @@ class Yaml implements DB
     private $config;
 
     /**
-     * @param array $config
+     * @param IConfig $config
      * @return DB
      */
-    public function init(array $config): DB
+    public function init(IConfig $config): DB
     {
-        $this->config = $config;
+        $this->config = $config->getAll();
         return $this;
     }
 

@@ -2,6 +2,8 @@
 
 namespace DrLenux\WorkersRun\messenger;
 
+use DrLenux\WorkersRun\IConfig;
+use DrLenux\WorkersRun\messenger\file\IFile;
 use DrLenux\WorkersRun\messenger\file\Json;
 use DrLenux\WorkersRun\messenger\file\Text;
 use DrLenux\WorkersRun\messenger\file\Yaml;
@@ -10,26 +12,26 @@ use DrLenux\WorkersRun\messenger\file\Yaml;
  * Class FileDb
  * @package src\messenger
  */
-class FileDb implements DB
+class FileDb implements DB, IFile
 {
     const FILE_TYPE_TEXT = 'text';
     const FILE_TYPE_YAML = 'yaml';
     const FILE_TYPE_JSON = 'json';
 
     /**
-     * @var array
+     * @var IConfig
      */
     private $config;
 
     /**
-     * @param array $config
+     * @param IConfig $config
      * @return DB
      * @throws \Exception
      */
-    public function init(array $config): DB
+    public function init(IConfig $config): DB
     {
-        $path = $config['file'];
         $this->config = $config;
+        $path = $config->getAll()['file'];
         if (!file_exists($path)) {
             $this->createFile($path);
         }
@@ -69,7 +71,7 @@ class FileDb implements DB
     private function getClass(): DB
     {
         $class = null;
-        switch ($this->config['type'] ?? self::FILE_TYPE_TEXT) {
+        switch ($this->config->getAll()['type'] ?? self::FILE_TYPE_TEXT) {
             case self::FILE_TYPE_TEXT :
                 $class = (new Text());
                 break;

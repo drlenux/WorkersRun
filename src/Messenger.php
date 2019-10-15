@@ -30,7 +30,7 @@ class Messenger
     {
         $this->config = $config;
         if (isset($config['lockStore'])) {
-            $store = new $config['lockStore'];
+            $store = $config['lockStore'];
             $factory = new Factory($store);
             $this->lock = $factory->createLock(__CLASS__);
         }
@@ -105,7 +105,7 @@ class Messenger
         if (null !== $class) {
             $class = new $class();
             if ($class instanceof DB) {
-                return $class->init($this->config['db']['config'] ?? []);
+                return $class->init($this->config['db']['config']);
             }
         }
         throw new \Exception("bad db");

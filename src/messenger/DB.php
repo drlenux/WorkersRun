@@ -2,6 +2,7 @@
 
 namespace DrLenux\WorkersRun\messenger;
 
+use DrLenux\WorkersRun\IConfig;
 use DrLenux\WorkersRun\MessengerResponse;
 
 /**
@@ -11,10 +12,10 @@ use DrLenux\WorkersRun\MessengerResponse;
 interface DB
 {
     /**
-     * @param array $config
-     * @return $this
+     * @param IConfig $config
+     * @return DB
      */
-    public function init(array $config): DB;
+    public function init(IConfig $config): DB;
 
     /**
      * @param string $to
@@ -30,9 +31,4 @@ interface DB
      * @return MessengerResponse[]
      */
     public function read(string $to, ?string $from = null, bool $delete = true): array;
-
-    /**
-     * @param string $path
-     */
-    public function createFile(string $path): void;
 }
