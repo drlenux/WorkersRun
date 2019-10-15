@@ -1,14 +1,19 @@
 <?php
 
-namespace DrLenux\WorkersRun;
+namespace example;
+
+use DrLenux\WorkersRun\Messenger;
+use DrLenux\WorkersRun\IWork;
+use DrLenux\WorkersRun\MessengerResponse;
 
 /**
  * Class Work
- * @package src
+ * @package example
  */
 class Work implements IWork
 {
     const U_SLEEP = 1000000;
+
     /**
      * @var float|int
      */
@@ -31,12 +36,12 @@ class Work implements IWork
     }
 
     /**
-     * @return bool
+     * @param Messenger $messenger
+     * @return MessengerResponse|null
      */
-    public function run(): bool
+    public function run(Messenger $messenger): ?MessengerResponse
     {
         usleep($this->time * self::U_SLEEP);
-        echo $this->message;
-        return true;
+        return (new MessengerResponse(WorkMessageEcho::class, getmypid(), $this->message));
     }
 }
